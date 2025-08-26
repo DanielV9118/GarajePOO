@@ -10,6 +10,10 @@ namespace Garaje
     {
         static void Main(string[] args)
         {
+           
+            
+            Console.ReadLine();
+
         }
     }
 }

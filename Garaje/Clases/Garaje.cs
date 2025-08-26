@@ -8,37 +8,42 @@ namespace Garaje.Clases
 {
     public class Garaje
     {
-        //atributos: número de garaje, descripción, capacidad de espacios, espacios ocupados
-        public int NumeroGaraje { get; set; }
-        public string Descripcion { get; set; }
-        public int CapacidadEspacios { get; set; }
-        public int EspaciosOcupados { get; set; }
+       
+        private int numeroGaraje;
+        private string descripcion;
+        private int capacidadEspacios;
+        private int espaciosOcupados;
 
        
         public Garaje(int numeroGaraje, string descripcion, int capacidadEspacios, int espaciosOcupados)
         {
-            NumeroGaraje = numeroGaraje;
-            Descripcion = descripcion;
-            CapacidadEspacios = capacidadEspacios;
-            EspaciosOcupados = espaciosOcupados;
+            this.numeroGaraje = numeroGaraje;
+            this.descripcion = descripcion;
+            this.capacidadEspacios = capacidadEspacios;
+            this.espaciosOcupados = espaciosOcupados;
         }
 
-        // Método para retornar espacios disponibles
+       
         public int EspaciosDisponibles()
         {
-            return CapacidadEspacios - EspaciosOcupados;
+            return capacidadEspacios - espaciosOcupados;
         }
 
-        // Método para actualizar espacios ocupados
-        public void ActualizarEspaciosOcupados(int espaciosSolicitados)
+        // Método para actualizar los espacios ocupados
+        public void ActualizarEspacios(int solicitados)
         {
-            EspaciosOcupados += espaciosSolicitados;
+            if (espaciosOcupados + solicitados <= capacidadEspacios)
+            {
+                espaciosOcupados += solicitados;
+                Console.WriteLine($"Se han ocupado {solicitados} espacios. Ahora hay {EspaciosDisponibles()} disponibles.");
+            }
+            else
+            {
+                Console.WriteLine("No hay suficientes espacios disponibles.");
+            }
         }
     }
 }
-    
-    
-    
-    
+
 
 
